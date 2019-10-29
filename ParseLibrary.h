@@ -10,11 +10,11 @@ class ParseLibrary
 private:
 	std::vector<int> IntTokens;
 	std::vector<std::string> CharTokens;
-	void (*InitialCall)();
-	void (*IntCallback)(int&);
-	void (*CharCallBack)(std::string&);
-	void (*FinallCall)();
-	void AddToken(int&, char*&);
+	void (*InitialCall)() = nullptr;
+	void (*IntCallback)(int&) = nullptr;
+	void (*CharCallBack)(std::string&) = nullptr;
+	void (*FinallCall)() = nullptr;
+	bool CheckCallBacks();
 public:
 	ParseLibrary() = default;
 	~ParseLibrary() = default;

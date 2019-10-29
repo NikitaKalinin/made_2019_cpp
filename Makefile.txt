@@ -1,0 +1,17 @@
+run: main
+	./main
+
+test: tests
+	./tests
+
+main: main.o ParseLibrary.o
+	g++ -o main main.o ParseLibrary.o
+
+tests: tests.o ParseLibrary.o
+	g++ -o tests tests.o ParseLibrary.o
+
+main.o: main.cpp ParseLibrary.h
+	g++ -c main.cpp
+
+ParseLibrary.o: ParseLibrary.o ParseLibrary.h
+	g++ -c ParseLibrary.cpp

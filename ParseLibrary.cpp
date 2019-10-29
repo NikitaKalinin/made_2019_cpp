@@ -1,13 +1,24 @@
 #include "ParseLibrary.h"
+#include <cassert>
+
+bool ParseLibrary::CheckCallBacks()
+{
+	if ((InitialCall == nullptr) ||
+		(FinallCall == nullptr) ||
+		(CharCallBack == nullptr) ||
+		(IntCallback == nullptr)) return false;
+	return true;
+}
 
 void ParseLibrary::ParseData(const char* data, const int size)
 {
 	int IntToken = 0, CharSize = 0, CharCapacity = 10;
 	bool MayBeInt = true;
 	char* CharToken = new char[10];
-
+	
+	assert(CheckCallBacks());
+	
 	InitialCall();
-
 	for (int i = 0; i < size; i++)
 	{
 		bool isSplit = ((data[i] != ' ') &&
