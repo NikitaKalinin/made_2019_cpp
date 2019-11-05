@@ -1,0 +1,20 @@
+run: main
+	./main
+
+test: tests
+	./tests
+
+main: main.o matrix.o
+	g++ -o main main.o matrix.o
+
+tests: tests.o matrix.o
+	g++ -o tests tests.o matrix.o
+
+tests.o: tests.cpp matrix.h
+	g++ -c tests.cpp
+
+main.o: main.cpp matrix.h
+	g++ -c main.cpp
+
+matrix.o: matrix.h
+	g++ -c matrix.cpp
